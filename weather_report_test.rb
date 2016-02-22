@@ -15,6 +15,12 @@ class TenDayForecast
   end
 end
 
+class SunriseSunset
+  def initialize(zipcode)
+    @response = JSON.parse(File.read("sunrise_sunset.json"))
+  end
+end
+
 class WeatherReportTest < Minitest::Test
 
   def test_current_conditions
@@ -31,4 +37,9 @@ class WeatherReportTest < Minitest::Test
       t.text_forecast.last
   end
 
+  def test_sunrise_sunset
+    s = SunriseSunset.new(27703)
+    assert_equal "6:55", s.sunrise
+    assert_equal "18:03", s.sunset
+  end
 end

@@ -16,12 +16,12 @@ class TenDayForecast
     text_forecast_array
   end
 
-  def simple_forecast
-    @response["forecast"]["simpleforecast"]["forecastday"].each do |n|
-      puts "#{n["date"]["weekday_short"]}, High: #{n["high"]["fahrenheit"]}"
-      puts "     Low: #{n["low"]["fahrenheit"]}"
-      puts "     Condition: #{n["conditions"]}"
-      puts
-    end
-  end
+  # def simple_forecast
+  #   @response["forecast"]["simpleforecast"]["forecastday"].each do |n|
+  #     puts "#{n["date"]["weekday_short"]}, High: #{n["high"]["fahrenheit"]}"
+  #     puts "     Low: #{n["low"]["fahrenheit"]}"
+  #     puts "     Condition: #{n["conditions"]}"
+  #     puts
+  #   end
+  # end
 end
