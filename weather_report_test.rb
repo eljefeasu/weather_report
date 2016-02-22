@@ -21,6 +21,12 @@ class SunriseSunset
   end
 end
 
+class Alerts
+  def initialize(zipcode)
+    @response = JSON.parse(File.read("alerts.json"))
+  end
+end
+
 class WeatherReportTest < Minitest::Test
 
   def test_current_conditions
@@ -41,5 +47,10 @@ class WeatherReportTest < Minitest::Test
     s = SunriseSunset.new(27703)
     assert_equal "6:55", s.sunrise
     assert_equal "18:03", s.sunset
+  end
+
+  def test_alerts
+    a = Alerts.new(27703)
+    assert_equal "There are no alerts in this area.", a.alerts?
   end
 end

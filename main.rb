@@ -1,6 +1,7 @@
 require './current_conditions.rb'
 require './ten_day_forecast.rb'
 require './sunrise_sunset.rb'
+require './alerts.rb'
 
 # puts "Enter a 5-digit zipcode: "
 # zipcode = gets.chomp
