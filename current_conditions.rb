@@ -7,15 +7,15 @@ class CurrentConditions
   end
 
   def location
-    location = @conditions["current_observation"]["display_location"]["full"]
+    @conditions["current_observation"]["display_location"]["full"]
   end
 
   def temp_f
-    temp_f = @conditions["current_observation"]["temp_f"]
+    @conditions["current_observation"]["temp_f"]
   end
 
   def weather
-    weather = @conditions["current_observation"]["weather"]
+    @conditions["current_observation"]["weather"]
   end
 
 end
