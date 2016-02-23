@@ -10,7 +10,7 @@ class Alerts
     alerts_array = []
     return "There are no alerts in this area." if @response["alerts"].empty?
     @response["alerts"].each do |a|
-      alerts_array << a
+      alerts_array << [a["description"],a["expires"]]
     end
     return alerts_array
   end

@@ -18,3 +18,14 @@ ten_day_forecast = TenDayForecast.new(zipcode)
 ten_day_forecast.print_text_forecast
 # ten_day_forecast.simple_forecast
 # ten_day_forecast.print_simple_forecast
+sunrise_sunset = SunriseSunset.new(zipcode)
+puts
+puts "Sunrise: #{sunrise_sunset.sunrise}"
+puts "Sunset: #{sunrise_sunset.sunset}"
+puts
+a = Alerts.new(zipcode)
+a.alerts
+puts
+puts "Active hurricanes (worldwide): "
+ah = ActiveHurricanes.new(zipcode)
+puts ah.active_hurricanes
