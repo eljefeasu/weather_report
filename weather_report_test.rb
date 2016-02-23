@@ -1,6 +1,10 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './main.rb'
+require './current_conditions.rb'
+require './ten_day_forecast.rb'
+require './sunrise_sunset.rb'
+require './alerts.rb'
+require './active_hurricanes.rb'
 
 
 class CurrentConditions
@@ -27,6 +31,12 @@ class Alerts
   end
 end
 
+class ActiveHurricanes
+  def initialize(zipcode)
+    @response = JSON.parse(File.read("active_hurricanes.json"))
+  end
+end
+
 class WeatherReportTest < Minitest::Test
 
   def test_current_conditions
@@ -43,6 +53,12 @@ class WeatherReportTest < Minitest::Test
       t.text_forecast.last
   end
 
+  def test_simple_ten_day_forecast
+    t = TenDayForecast.new(27703)
+    assert_equal ["Mon", "55", "42", "Rain"], t.simple_forecast.first
+    assert_equal ["Wed", "56", "39", "Partly Cloudy"], t.simple_forecast.last
+  end
+
   def test_sunrise_sunset
     s = SunriseSunset.new(27703)
     assert_equal "6:55", s.sunrise
@@ -52,5 +68,10 @@ class WeatherReportTest < Minitest::Test
   def test_alerts
     a = Alerts.new(27703)
     assert_equal "There are no alerts in this area.", a.alerts?
+  end
+
+  def test_active_hurricanes
+    h = ActiveHurricanes.new(27703)
+    assert_equal ["Invest 90C", "Tropical Cyclone Winston"], h.active_hurricanes
   end
 end
